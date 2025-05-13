@@ -1,0 +1,71 @@
+<div class="container-fluid row p-0" style="min-height: 100vh;">
+    <div class="col-md-2 bg-success" [style]="toggle?'display:block':'display:none'">
+        <h3 class="text-warning mt-3 text-center">
+            <i class="fa-solid fa-user-tie text-light me-2"></i>
+            Cooksplace Admin
+        </h3>
+        <div class="d-flex flex-column h-50 justify-content-between mt-5">
+            <a routerLink="/admin" class="text-center text-light sidebar">
+                <i class="fa-solid fa-chart-simple me-2"></i>
+                Dashboard
+            </a>
+            <a routerLink="/admin/recipelist" class="text-center text-light sidebar">
+                <i class="fa-solid fa-utensils me-2"></i>
+                Recipes
+            </a>
+            <a routerLink="/admin/userlist" class="text-center text-light sidebar">
+                <i class="fa-solid fa-users me-2"></i>
+                Users
+            </a>
+            <a routerLink="/admin/recipedownloads" class="text-center text-light sidebar">
+                <i class="fa-solid fa-file-arrow-down me-2"></i>
+                Downloads
+            </a>
+            <a routerLink="/admin/testimonies" class="text-center text-light sidebar">
+                <i class="fa-solid fa-comments me-2"></i>
+                Testimonies
+            </a>
+            <button href="" class="text-center text-danger sidebar" (click)="logout()">
+                <i class="fa-solid fa-right-from-bracket me-1"></i>
+                Logout
+            </button>
+        </div>
+    </div>
+    <div class="col p-0">
+        <div class="bg-success text-light container-fluid m-0 p-3 d-flex align-items-center">
+            <button class="btn me-3" (click)="handletoggle()">
+                <i class="fa-solid fa-list text-warning fa-xl"></i>
+            </button>
+            <h3>Admin Dashboard</h3>
+        </div>
+
+        <div class="d-flex justify-content-around mt-3 gap-3 m-3">
+            <div class="p-5 bg-success">
+                <h3>Total Recipes: {{recipeCount}}</h3>
+            </div>
+            <div class="p-5 bg-info">
+                <h3>Total Users: {{userCount}}</h3>
+            </div>
+            <div class="p-5 bg-warning">
+                <h3>Total Downloads: {{downloadCount}}</h3>
+            </div>
+            <div class="p-5 bg-danger">
+                <h3>Total Requests: {{requestCount}}</h3>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <mat-card class="demo-inline-calendar-card">
+                        <mat-calendar [(selected)]="selected"></mat-calendar>
+                    </mat-card>
+                </div>
+                <div class="col">
+                    <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+                        style="width: 100%; height: 400px; display: block;"></highcharts-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

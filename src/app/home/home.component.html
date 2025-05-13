@@ -1,0 +1,152 @@
+<app-header></app-header>
+<div
+  class="container-fluid"
+  style="min-height: 80vh; background-color: #eaebed"
+>
+  <div class="row pt-5" style="background-color: #f54768">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-4 p-4">
+      <div
+        class="d-flex gap-2 align-items-center"
+        style="color: #eaebed; margin-top: 100px"
+      >
+        <h1 class="fw-bold">
+          <i class="fa-solid fa-bowl-food"></i> Cooksplace
+        </h1>
+      </div>
+      <div
+        class="d-flex flex-column align-items-center justify-content-center gap-3 mt-3"
+      >
+        <h4 class="text-dark" style="text-align: justify">
+          Discover 100+ recipes in your hand with the best recipe. Help you find
+          the easiest way to cook
+        </h4>
+      </div>
+      <a href="/login" class="btn btn-light mt-4">Explore More</a>
+    </div>
+    <div class="col-lg-5">
+      <div class="d-md-flex d-none align-items-center">
+        <img id="homelogo" src="dishHome.png" alt="" class="img-fluid" />
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid py-5">
+    <div>
+      <h2 style="color: #f54768">Popular Recipes Of The Week</h2>
+      <div class="d-md-flex justify-content-between mt-2">
+        <p class="fs-5">Our most popular recipes of the week</p>
+        <a routerLink="recipes" class="text-dark">View all</a>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <div
+          class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-between"
+        >
+          @for (recipe of recipeList; track $index) {
+          <div class="card" style="width: 20rem">
+            <img
+              [src]="recipe.image"
+              class="card-img-top"
+              height="300px"
+              alt="..."
+            />
+            <div class="card-body" style="background-color: #f54768">
+              <h5 class="card-text p-2 text-light">{{ recipe.name }}</h5>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="row py-4"
+    style="
+      background-image: url('https://png.pngtree.com/background/20210711/original/pngtree-black-atmosphere-simple-meal-food-food-banner-picture-image_1084037.jpg');
+      height: 400px;
+      background-size: cover;
+    "
+  >
+    <div class="col justify-content-center d-flex" id="recipebanner">
+      <div
+        class="d-flex flex-column justify-content-center align-items-center rounded-3 ps-4 pe-4"
+      >
+        <h3
+          class="text-center fw-bolder"
+          style="font-size: 50px; color: #eaebed"
+        >
+          50+ Quick and Easy Recipes
+        </h3>
+        <p class="mt-3 text-center fs-4 text-light">
+          Discover the perfect food ideas to kickstart your cooking journey in a
+          <br />
+          quick, simple, and effortless way
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row py-4" style="background-color: #f54768; color: #eaebed">
+    <div
+      class="col-lg-6 d-flex justify-content-center justify-content-lg-end p-4"
+    >
+      <img
+        src="https://cdn2.hubspot.net/hubfs/3432114/Cross-Device-1-Updated.jpg"
+        alt="Download App"
+        class="img-fluid shadow"
+        style="max-height: 400px; border-radius: 10px"
+      />
+    </div>
+    <div
+      class="col-lg-6 d-flex flex-column align-items-center text-center p-5 mt-5"
+    >
+      <h4 class="fw-bold fs-1">Download App</h4>
+      <p class="mt-1 fs-5 text-light">
+        Download the app from the App Store or <br />Google Play for a better
+        experience.
+      </p>
+      <div
+        class="d-md-flex align-items-center justify-content-center gap-3 mt-2"
+      >
+        <img
+          src="playstore.png"
+          alt="Google Play"
+          class="img-fluid"
+          style="max-width: 200px; cursor: pointer"
+        />
+        <img
+          src="appstore.png"
+          alt="App Store"
+          class="img-fluid mt-2 mt-md-0"
+          style="max-width: 200px; cursor: pointer"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5 text-center">
+    <h2 style="color: #f54768">Client Testimonials</h2>
+    <marquee behavior="" direction="">
+      <div class="d-flex my-4">
+        @for (i of testimonies; track $index) {
+        <div
+          class="rounded p-3 me-3 w-25 text-center"
+          style="border: 2px solid #f54768"
+        >
+          <p style="text-align: justify; white-space: normal">
+            {{ i.testimony }}
+          </p>
+          <h5 class="text-end">- {{i.name}}</h5>
+        </div>
+        }
+        @empty {
+          <h5 class="text-center">No Testimonies available</h5>
+        }
+      </div>
+    </marquee>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,10 @@
+.sidebar{
+    padding: 8px;
+    text-decoration: none;
+    margin-left: 30px;
+    margin-right: 30px;
+    transition: 100ms border;
+}
+.sidebar:hover{
+    border: 1px solid white;
+}

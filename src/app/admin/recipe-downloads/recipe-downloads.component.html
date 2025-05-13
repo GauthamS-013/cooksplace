@@ -1,0 +1,55 @@
+<div class="container-fluid row p-0" style="min-height: 100vh;">
+    <div class="col-md-2 bg-success">
+        <h3 class="text-warning mt-3 text-center">
+            <i class="fa-solid fa-user-tie text-light me-2"></i>
+            Cooksplace Admin
+        </h3>
+        <div class="d-flex flex-column h-50 justify-content-between mt-5">
+            <a routerLink="/admin" class="text-center text-light sidebar">
+                <i class="fa-solid fa-chart-simple me-2"></i>
+                Dashboard
+            </a>
+            <a routerLink="/admin/recipelist" class="text-center text-light sidebar">
+                <i class="fa-solid fa-utensils me-2"></i>
+                Recipes
+            </a>
+            <a routerLink="/admin/userlist" class="text-center text-light sidebar">
+                <i class="fa-solid fa-users me-2"></i>
+                Users
+            </a>
+            <a routerLink="/admin/recipedownloads" class="text-center text-light sidebar">
+                <i class="fa-solid fa-file-arrow-down me-2"></i>
+                Downloads
+            </a>
+            <a routerLink="/admin/testimonies" class="text-center text-light sidebar">
+                <i class="fa-solid fa-comments me-2"></i>
+                Testimonies
+            </a>
+            <button href="" class="text-center text-danger sidebar">
+                <i class="fa-solid fa-right-from-bracket me-1"></i>
+                Logout
+            </button>
+        </div>
+    </div>
+    <div class="col">
+        <h2 class="mt-3 fw-bolder">Downloads</h2>
+        <table class="table table-bordered my-4">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Recipe</th>
+                    <th>Download Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (i of downloads; track downloads.index) {
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.count}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

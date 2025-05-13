@@ -1,0 +1,156 @@
+<app-header></app-header>
+<div
+  class="container-fluid"
+  style="min-height: 80vh; background-color: #eaebed"
+>
+  <div class="row pt-4" style="background-color: #f54768; color: #eaebed">
+    <div class="col d-flex justify-content-center align-items-center">
+      <div
+        class="d-flex flex-column justify-content-center align-items-center p-5 w-75"
+      >
+        <h1 class="fw-bold">Contact Us</h1>
+        <p style="text-align: justify" class="mt-4 text-light">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+          recusandae cum, sapiente quasi repellendus, tempore necessitatibus
+          corrupti, perspiciatis suscipit debitis sequi hic mollitia illum vero
+          beatae minus pariatur expedita deserunt. Lorem ipsum, dolor sit amet
+          consectetur adipisicing elit. Ipsam et totam, eum quo quos expedita
+          dolor sit amet consectetur adipisicing qua
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row p-3">
+    <div class="col-lg-6">
+      <div
+        class="d-flex justify-content-center flex-column mt-4 border-bottom border-dark pb-4"
+      >
+        <h3 style="color: #f54768" class="fw-bolder">Get In Touch</h3>
+        <p style="text-align: justify" class="mt-2">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima ut,
+          quasi vel, quisquam ex quae praesentium sequi magni animi ab nisi odio
+          libero, temporibus eius non dignissimos quidem! Temporibus, eius?
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque earum
+          omnis reiciendis, illo obcaecati rerum excepturi quos laudantium,
+          dolorum debitis consequuntur molestias asperiores, adipisci fuga
+          tenetur nam voluptatum nemo quo.
+        </p>
+        <div class="d-flex align-items-center mt-3">
+          <div
+            class="text-light p-2 rounded-pill"
+            style="background-color: #f54768"
+          >
+            <i class="fa-solid fa-location-crosshairs fa-lg"></i>
+          </div>
+          <div class="d-flex flex-column ms-4 justify-content-center">
+            <h4 class="mt-2">Address</h4>
+            <p>NYC 4567, PO Berlin</p>
+          </div>
+        </div>
+        <div class="d-flex align-items-center mt-3">
+          <div
+            class="text-light p-2 rounded-pill"
+            style="background-color: #f54768"
+          >
+            <i class="fa-solid fa-phone fa-lg"></i>
+          </div>
+          <div class="d-flex flex-column ms-4 justify-content-center">
+            <h4 class="mt-2">Phone Number</h4>
+            <p>6538956358</p>
+          </div>
+        </div>
+        <div class="d-flex align-items-center mt-3">
+          <div
+            class="text-light p-2 rounded-pill"
+            style="background-color: #f54768"
+          >
+            <i class="fa-solid fa-envelope fa-lg"></i>
+          </div>
+          <div class="d-flex flex-column ms-4 justify-content-center">
+            <h4 class="mt-2">Email</h4>
+            <p>NYC 4567, PO Berlin</p>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column justify-content-center gap-4 mt-4 pb-5">
+        <h3 style="color: #f54768" class="fw-bolder">Follow Us</h3>
+        <div class="d-flex gap-3">
+          <div
+            class="text-light p-2 rounded-pill"
+            style="background-color: #f54768"
+          >
+            <i class="fa-brands fa-facebook fa-lg"></i>
+          </div>
+          <div
+            class="text-light p-2 rounded-pill"
+            style="background-color: #f54768"
+          >
+            <i class="fa-brands fa-instagram fa-lg"></i>
+          </div>
+          <div
+            class="text-light p-2 rounded-pill"
+            style="background-color: #f54768"
+          >
+            <i class="fa-brands fa-x-twitter fa-lg"></i>
+          </div>
+          <div
+            class="text-light p-2 rounded-pill"
+            style="background-color: #f54768"
+          >
+            <i class="fa-brands fa-youtube fa-lg"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 d-flex justify-content-center align-items-center">
+      <div class="d-flex justify-content-center align-items-center">
+        <div
+          class="p-4 d-flex flex-column align-items-center justify-content-center gap-4 shadow py-5" style="background-color: #eaebed;"
+        >
+          <h3 style="color: #f54768" class="fw-bolder">Client Testimony</h3>
+
+          <form [formGroup]="testForm" (ngSubmit)="handleTestimony()">
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="Name"
+              class="form-control mb-3"
+            />
+            @if (testForm.controls['name'].invalid && testForm.controls['name'].touched) {
+              <div class="text-danger">*Invalid Name</div>
+            }
+            <input
+              type="text"
+              formControlName="email"
+              placeholder="Email"
+              class="form-control mb-3"
+            />
+            @if (testForm.controls['email'].invalid && testForm.controls['email'].touched) {
+              <div class="text-danger">*Invalid Email</div>
+            }
+            <textarea
+              name=""
+              formControlName="testimony"
+              id=""
+              class="form-control mb-4"
+              placeholder="Message"
+            ></textarea>
+            @if (testForm.controls['testimony'].invalid && testForm.controls['testimony'].touched) {
+              <div class="text-danger">*Invalid Testimony</div>
+            }
+            <p class="mt-4" style="text-align: justify;">
+                <span class="text-danger fs-4">*</span>
+              By submitting, you are agreeing to te terms and conditions of our
+              website. <br> We may use your details in our site.
+            </p>
+            <button type="submit" class="btn btn-danger mt-2" [disabled]="testForm.invalid">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

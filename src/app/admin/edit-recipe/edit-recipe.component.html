@@ -1,0 +1,114 @@
+<div class="container-fluid row p-0" style="min-height: 100vh;">
+    <div class="col-md-2 bg-success">
+        <h3 class="text-warning mt-3 text-center">
+            <i class="fa-solid fa-user-tie text-light me-2"></i>
+            Cooksplace Admin
+        </h3>
+        <div class="d-flex flex-column h-50 justify-content-between mt-5">
+            <a routerLink="/admin" class="text-center text-light sidebar">
+                <i class="fa-solid fa-chart-simple me-2"></i>
+                Dashboard
+            </a>
+            <a routerLink="/admin/recipelist" class="text-center text-light sidebar">
+                <i class="fa-solid fa-utensils me-2"></i>
+                Recipes
+            </a>
+            <a routerLink="/admin/userlist" class="text-center text-light sidebar">
+                <i class="fa-solid fa-users me-2"></i>
+                Users
+            </a>
+            <a routerLink="/admin/recipedownloads" class="text-center text-light sidebar">
+                <i class="fa-solid fa-file-arrow-down me-2"></i>
+                Downloads
+            </a>
+            <a routerLink="/admin/testimonies" class="text-center text-light sidebar">
+                <i class="fa-solid fa-comments me-2"></i>
+                Testimonies
+            </a>
+            <button href="" class="text-center text-danger sidebar">
+                <i class="fa-solid fa-right-from-bracket me-1"></i>
+                Logout
+            </button>
+        </div>
+    </div>
+    <div class="col d-flex justify-content-center align-items-center" style="min-height: 100vh">
+        <div class="m-5 border p-2 shadow w-75">
+            <form action="" #recipeForm="ngForm">
+                <h2 class="text-center my-3 fw-bolder">
+                    Edit Recipe Details
+                </h2>
+                @if (recipeData.image) {
+                    <div class="d-flex justify-content-center mb-3">
+                        <img src="{{recipeData.image}}" alt="recipe image" class="img-thumbnail m-1" style="height: 200px;">
+                    </div>
+                }
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="name" [(ngModel)]="recipeData.name" placeholder="Recipe Name" class="form-control mb-2">
+                        <input type="text" name="prep" [(ngModel)]="recipeData.PrepTimeMinutes" placeholder="Recipe Preparation Time In Minutes " class="form-control mb-2">
+                        <label for="" class="w-100 text-center">
+                            Choose Cuisine Type
+                            <select name="cuisine" id="" [(ngModel)]="recipeData.cuisine" class="form-control w-100" >
+                                <option value="" selected disabled>Choose a cuisine</option>
+                                @for (i of cuisineArray; track $index) {
+                                <option value="{{i}}">{{i}}</option>
+                                }
+                            </select>
+                        </label>
+                        <input type="text" name="img" [(ngModel)]="recipeData.image" class="form-control my-2" placeholder="Recipe Image URL">
+                        <div>
+                            <div class="d-flex gap-2">
+                                <textarea name="ingredients" id="" #ingre class="form-control w-75" placeholder="Recipe Ingredients" ></textarea>
+                                <button class="btn btn-outline-success w-25" (click)="addIngredients(ingre)"><span class="fs-3">+</span></button>
+                            </div>
+                            @if (ingredients.length>0) {
+                                <div class="border-1 m-1 p-1">
+                                    @for (i of ingredients; track $index) {
+                                        <span class="border-1 p-1 m-2">{{i}}</span><button class="btn" (click)="removeIngredients(i)"><i class="fa-solid fa-xmark text-danger"></i></button>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="cooking" [(ngModel)]="recipeData.cookTimeMinutes" placeholder="Recipe Cooking Time In Minutes" class="form-control mb-2">
+                        <input type="text" placeholder="Recipe Servings(ex:4)" name="servings" [(ngModel)]="recipeData.servings" class="form-control mb-2">
+                        <label for="" class="w-100 text-center">
+                            Choose Recipe Difficulty
+                            <select name="difficulty" [(ngModel)]="recipeData.difficulty" id="" class="form-control w-100">
+                                <option value="" selected disabled>Choose a difficulty</option>
+                                @for (i of difficultyArray; track $index) {
+                                <option value="{{i}}">{{i}}</option>
+                                }
+                            </select>
+                        </label>
+                        <input type="text" class="form-control my-2" name="calories" [(ngModel)]="recipeData.caloriesPerServing" placeholder="Recipe Calories Per Serving">
+                        <div class="d-flex gap-2">
+                            <textarea name="instructions" #instr id="" class="form-control w-75" placeholder="Recipe Cooking Instructions" ></textarea>
+                            <button class="btn btn-outline-success w-25" (click)="addInstructions(instr)"><span class="fs-3">+</span></button>
+                        </div>
+                        @if (instructions.length>0) {
+                            <div class="border-1 m-1 p-1">
+                                @for (i of instructions; track $index) {
+                                    <span class="border-1 p-1 m-2">{{i}}</span><button class="btn" (click)="removeInstructions(i)"><i class="fa-solid fa-xmark text-danger"></i></button>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="border my-2 border-1 p-2">
+                    <h5 class="text-center mb-3">Choose Meal Type</h5>
+                    <div class="d-flex flex-wrap justify-content-evenly">
+                        @for (i of mealTypeArray; track $index) {
+                            <label [for]="i"><input type="checkbox" [checked]="recipeData.mealType?.includes(i)" (change)="getmealTypes($event)" [name]="i" [value]="i" [id]="i">{{i}}</label>
+                        }
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn btn-success p-2 w-100" (click)="handleSubmit()" [disabled]="recipeForm.invalid">Update Recipe</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>

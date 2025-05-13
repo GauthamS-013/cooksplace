@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="container-fluid" style="min-height: 60vh;">
+<h1 class="mt-4 p-3" style="color: #f54768;">Saved Recipe List</h1>
+<div class="d-flex flex-wrap p-3 gap-3">
+    @for (i of recipes; track recipes.index) {
+        <div class="card mb-3 shadow" style="width: 18rem">
+            <img
+              src={{i.image}}
+              class="card-img-top"
+              height="250px"
+              alt="..."
+            />
+            <div class="card-body" style="background-color: #f54768">
+              <h5 class="card-title p-2 text-light fw-bold">
+                {{ i.name }}
+              </h5>
+              <p class="text-light ps-2">Cuisine: {{ i.cuisine }}</p>
+              <div class="card-footer d-flex justify-content-between">
+                <a routerLink="/details/{{i.id}}" class="btn btn-outline-light"><i class="fa-solid fa-info"></i></a>
+                <button class="btn text-light" (click)="removeItem(i._id)"><i class="fa-solid fa-circle-xmark fa-xl"></i></button>
+              </div>
+            </div>
+          </div>
+    }@empty {
+      <h2 class="text-danger text-center my-3">No saved recipes</h2>
+    }
+</div>
+</div>
+<app-footer></app-footer>

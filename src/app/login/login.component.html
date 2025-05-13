@@ -1,0 +1,35 @@
+<div
+  class="container-fluid d-flex justify-content-center align-items-center flex-column"
+  style="min-height: 100vh"
+>
+  <a routerLink="" class="text-decoration-none"
+    ><h1 class="fw-bold" style="color: #f54768">
+      <i class="fa-solid fa-bowl-food"></i> Cooksplace
+    </h1></a
+  >
+  <h6 class="fw-bolder">Get more than 100+ recipes on your fingertips!!</h6>
+  <div
+    class=" p-5 shadow w-50 border-1 mt-4"
+    style="background-color: #eaebed"
+  >
+    <h3 class="text-center fw-bolder" style="color: #f54768">Login</h3>
+    <form action="" class="mt-4" [formGroup]="logForm" (ngSubmit)="handleLogin()">
+      <input type="text" placeholder="Email Id" class="form-control mb-4" formControlName="email" />
+      @if (logForm.controls['email'].invalid && logForm.controls['email'].touched) {
+        <div class="text-danger">*Invalid Email</div>
+      }
+      <input type="password" placeholder="Password" class="form-control mb-4" formControlName="password" />
+      @if (logForm.controls['password'].invalid && logForm.controls['password'].touched) {
+        <div class="text-danger">*Invalid Password</div>
+      }
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-danger px-4" [disabled]="logForm.invalid">Login</button>
+        <p>
+          New Here?<a routerLink="/reg" class="ms-2 text-decoration-none"
+            >Register</a
+          >
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

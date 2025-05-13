@@ -1,0 +1,113 @@
+<app-header></app-header>
+<div
+  class="container-fluid"
+  style="min-height: 80vh; background-color: #eaebed"
+>
+  <div class="container-fluid py-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="container">
+          <h3 style="color: #f54768">Filter</h3>
+          <div
+            class="mt-md-5 mt-3 d-flex flex-column gap-2 align-items-start mb-3 mb-md-0"
+          >
+            <button class="btn border border-dark" (click)="getRecipe()">
+              All
+            </button>
+            <button
+              class="btn dropdown-toggle border border-dark"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample1"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              Cuisine Type
+            </button>
+            <div class="collapse" id="collapseExample1">
+              @for (cuisine of cuisineArray; track $index) {
+              <button
+                class="btn"
+                style="transition: border 0.3s"
+                onmouseover="this.style.border='1px solid black'"
+                onmouseout="this.style.border='1px solid transparent'"
+                (click)="filterAllRecipe('cuisine', cuisine)"
+              >
+                {{ cuisine }}
+              </button>
+              }
+            </div>
+            <button
+              class="btn dropdown-toggle border border-dark"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample2"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              Meal Type
+            </button>
+            <div class="collapse" id="collapseExample2">
+              @for (meal of mealtypeArray; track $index) {
+              <button
+                class="btn"
+                style="transition: border 0.3s"
+                onmouseover="this.style.border='1px solid black'"
+                onmouseout="this.style.border='1px solid transparent'"
+                (click)="filterAllRecipe('mealType', meal)"
+              >
+                {{ meal }}
+              </button>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="d-flex justify-content-between">
+          <h3 style="color: #f54768">All Recipes</h3>
+          <input
+            [(ngModel)]="searchKey"
+            type="search"
+            class="form-control w-25"
+            placeholder="Search by recipe name"
+          />
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <div
+              class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start"
+            >
+              @if (recipeList.length>0) { @for (recipe of recipeList |
+              search:searchKey | paginate:{itemsPerPage: 12,currentPage:p} ; track $index) {
+              <div class="card" style="width: 18rem">
+                <img
+                  [src]="recipe.image"
+                  class="card-img-top"
+                  height="250px"
+                  alt="..."
+                />
+                <div class="card-body" style="background-color: #f54768">
+                  <h5 class="card-title p-2 text-light fw-bold">
+                    {{ recipe.name }}
+                  </h5>
+                  <p class="text-light ps-2">Cuisine: {{ recipe.cuisine }}</p>
+                  <a routerLink="/details/{{recipe.id}}" class="stretched-link"></a>
+                </div>
+              </div>
+              }@if ((recipeList|search:searchKey).length==0) {
+              <h4 class="text-danger fw-bold mt-3">No Recipe Found.</h4>
+              } } @else {
+              <h4 class="text-danger fw-bold mt-3">No Recipe Found.</h4>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center pt-5">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

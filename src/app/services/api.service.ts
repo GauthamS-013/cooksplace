@@ -6,7 +6,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
 
-  base_url="http://localhost:3000"
+  base_url="https://cooksplace-server.onrender.com"
 
   setUpHeader(){
     const token=sessionStorage.getItem('token')
